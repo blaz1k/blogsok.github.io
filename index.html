@@ -15,6 +15,12 @@
         --text: #2c3e50;
         --light: #ffffff;
         --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        --header-height: clamp(15vh, 18vh, 20vh);
+        
+        /* Цвета брендов */
+        --tiktok: #000000;
+        --vk: #4a76a8;
+        --youtube: #ff0000;
     }
     
     * {
@@ -25,7 +31,7 @@
     
     body {
         font-family: "Inter Tight", sans-serif;
-        background-color: #f8fcff;
+        background: linear-gradient(135deg, #f0f8ff 0%, #e6f2ff 100%);
         color: var(--text);
         line-height: 1.6;
         min-height: 100vh;
@@ -39,18 +45,68 @@
         align-items: center;
         justify-content: center;
         width: 100%;
-        min-height: 18vh;
+        min-height: var(--header-height);
         color: var(--light);
         box-shadow: var(--shadow);
-        padding: 1.5rem 5%;
-        text-align: center;
+        padding: 1rem 5%;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .shapka::before {
+        content: "";
+        position: absolute;
+        width: 150px;
+        height: 150px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        top: -50px;
+        left: -50px;
+    }
+    
+    .shapka::after {
+        content: "";
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 50%;
+        bottom: -30px;
+        right: 20%;
+    }
+    
+    .header-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem;
+        z-index: 1;
+        max-width: 1200px;
+        width: 100%;
+    }
+    
+    .profile-img {
+        width: clamp(60px, 8vw, 90px);
+        height: clamp(60px, 8vw, 90px);
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid rgba(255, 255, 255, 0.8);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+    }
+    
+    .profile-img:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
     }
     
     .title {
         font-weight: 700;
-        font-size: clamp(2.2rem, 5vw, 3.5rem);
+        font-size: clamp(2rem, 5vw, 3.5rem);
         text-shadow: 0 2px 4px rgba(0,0,0,0.2);
         letter-spacing: -0.5px;
+        text-align: center;
+        padding: 0.5rem;
     }
     
     .container {
@@ -63,22 +119,33 @@
         box-shadow: var(--shadow);
         display: flex;
         flex-direction: column;
-        gap: 2rem;
+        gap: 1.8rem;
     }
     
     .bio {
         text-align: center;
-        font-size: 1.25rem;
+        font-size: clamp(1.1rem, 1.25rem, 1.4rem);
         line-height: 1.8;
         color: var(--text);
         padding: 0 1rem;
         display: flex;
         flex-direction: column;
         gap: 0.8rem;
+        background: linear-gradient(to right, #f8fcff, #ffffff, #f8fcff);
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-bottom: 0.5rem;
     }
     
     .bio span {
         display: block;
+    }
+    
+    .social-links {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+        margin-top: 1rem;
     }
     
     .link-card {
@@ -91,27 +158,83 @@
         color: var(--text);
         transition: all 0.3s ease;
         box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        border: 1px solid rgba(69, 133, 189, 0.1);
     }
     
     .link-card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-        background: #e1f0ff;
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        border-color: rgba(69, 133, 189, 0.2);
+    }
+    
+    /* Цвета для разных платформ при наведении */
+    .link-card[href*="tiktok"]:hover {
+        background: linear-gradient(to right, #f0f8ff, #0000000d);
+        border-color: rgba(0, 0, 0, 0.1);
+    }
+    
+    .link-card[href*="vk"]:hover {
+        background: linear-gradient(to right, #f0f8ff, #4a76a80d);
+        border-color: rgba(74, 118, 168, 0.1);
+    }
+    
+    .link-card[href*="youtube"]:hover {
+        background: linear-gradient(to right, #f0f8ff, #ff00000d);
+        border-color: rgba(255, 0, 0, 0.1);
+    }
+    
+    .link-card[href*="t.me"]:hover {
+        background: linear-gradient(to right, #e1f0ff, #f0f8ff);
     }
     
     .link-card img {
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        border-radius: 12px;
         object-fit: cover;
         margin-right: 1.5rem;
-        border: 2px solid var(--primary);
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        border: 2px solid #e6e6e6;
+        padding: 5px;
+        background: white;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+    }
+    
+    /* Стили для иконок разных платформ */
+    .link-card[href*="tiktok"] img {
+        border-color: var(--tiktok);
+    }
+    
+    .link-card[href*="vk"] img {
+        border-color: var(--vk);
+    }
+    
+    .link-card[href*="youtube"] img {
+        border-color: var(--youtube);
+    }
+    
+    .link-card[href*="t.me"] img {
+        border-radius: 50%;
+        border-color: var(--primary);
+    }
+    
+    .link-card:hover img {
+        transform: scale(1.1);
     }
     
     .link-card span {
-        font-size: 1.2rem;
-        font-weight: 500;
+        font-size: clamp(1.1rem, 1.2rem, 1.3rem);
+        font-weight: 600;
+        flex-grow: 1;
+        text-align: left;
+    }
+    
+    .platform-name {
+        display: block;
+        font-size: 0.9rem;
+        font-weight: 400;
+        color: #666;
+        margin-top: 3px;
     }
     
     .emoji {
@@ -119,6 +242,11 @@
         margin: 0 4px;
         font-size: 1.3em;
         vertical-align: middle;
+        transition: transform 0.3s ease;
+    }
+    
+    .emoji:hover {
+        transform: scale(1.2) rotate(5deg);
     }
     
     @media (max-width: 768px) {
@@ -126,15 +254,28 @@
             padding: 1.5rem;
             width: 95%;
             margin: 1.5rem auto;
+            gap: 1.5rem;
         }
         
-        .title {
-            font-size: 2.2rem;
+        .header-content {
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+        
+        .profile-img {
+            width: 80px;
+            height: 80px;
+            order: -1;
         }
         
         .bio {
+            padding: 1rem;
             font-size: 1.1rem;
-            padding: 0;
+        }
+        
+        .social-links {
+            grid-template-columns: 1fr;
+            gap: 1.2rem;
         }
         
         .link-card {
@@ -142,41 +283,49 @@
         }
         
         .link-card img {
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
             margin-right: 1rem;
-        }
-        
-        .link-card span {
-            font-size: 1.1rem;
         }
     }
     
     @media (max-width: 480px) {
         .shapka {
-            min-height: 15vh;
-            padding: 1rem;
+            min-height: clamp(12vh, 15vh, 18vh);
+            padding: 0.8rem;
+        }
+        
+        .title {
+            font-size: 1.8rem;
         }
         
         .bio {
             gap: 0.6rem;
+            font-size: 1rem;
         }
         
         .link-card {
-            flex-direction: column;
-            text-align: center;
-            padding: 1.5rem;
+            flex-direction: row;
+            text-align: left;
+            padding: 1.2rem;
         }
         
         .link-card img {
-            margin: 0 0 1rem 0;
+            margin: 0 1rem 0 0;
+        }
+        
+        .link-card span {
+            text-align: left;
         }
     }
     </style>
 </head>
 <body>
     <header class="shapka">
-        <h1 class="title">Елена Соколенко</h1>
+        <div class="header-content">
+            <img src="icon.jpg" alt="Елена Соколенко" class="profile-img">
+            <h1 class="title">Елена Соколенко</h1>
+        </div>
     </header>
     
     <main class="container">
@@ -186,20 +335,37 @@
             <span><span class="emoji">💍</span> Замужем 2.0 | <span class="emoji">🎨</span> Творю</span>
         </div>
         
-        <a href="https://t.me/vertera_su" class="link-card">
-            <img src="health.jfif" alt="Иконка здоровья">
-            <span>Мой канал о здоровье</span>
-        </a>
-        
-        <a href="https://t.me/Blog_sok" class="link-card">
-            <img src="profileIcon.jfif" alt="Иконка профиля">
-            <span>Написать мне</span>
-        </a>
+        <div class="social-links">
+            <a href="https://t.me/vertera_su" class="link-card">
+                <img src="health.jpg" alt="Иконка здоровья">
+                <span>Мой канал о здоровье<br><span class="platform-name">Telegram</span></span>
+            </a>
+            
+            <a href="https://t.me/Blog_sok" class="link-card">
+                <img src="profileIcon.jpg" alt="Иконка профиля">
+                <span>Написать мне<br><span class="platform-name">Telegram</span></span>
+            </a>
 
-        <a href="https://t.me/sokolenko_livegood" class="link-card">
-            <img src="tgChannel.jfif" alt="Иконка профиля">
-            <span>Мой основной канал</span>
-        </a>
+            <a href="https://t.me/sokolenko_livegood" class="link-card">
+                <img src="tgChannel.jpg" alt="Телеграм канал">
+                <span>Мой основной канал<br><span class="platform-name">Telegram</span></span>
+            </a>
+            
+            <a href="https://www.tiktok.com/@blog_sok?_t=ZS-8xQNodFr8Mr&_r=1" class="link-card">
+                <img src="tiktok.png" alt="TikTok">
+                <span>Мой TikTok<br><span class="platform-name">TikTok</span></span>
+            </a>
+            
+            <a href="https://vk.com/blog_sok" class="link-card">
+                <img src="vk.png" alt="ВКонтакте">
+                <span>Моя страница ВКонтакте<br><span class="platform-name">VK</span></span>
+            </a>
+            
+            <a href="https://youtube.com/@blog_sok?si=I_SRzI-FKwOHdQ5E" class="link-card">
+                <img src="youtube.png" alt="YouTube">
+                <span>Мой YouTube-канал<br><span class="platform-name">YouTube</span></span>
+            </a>
+        </div>
     </main>
 </body>
 </html>
