@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Елена Соколенко | Бизнес и психология</title>
+    <meta name="description" content="Бизнес по подписке, HR и психология. Разбираюсь в себе, чтобы понимать других.">
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300..700;1,300..700&display=swap');
+    
+    :root {
+        --primary: #4585bd;
+        --secondary: #f0f8ff;
+        --accent: #ff6b6b;
+        --text: #2c3e50;
+        --light: #ffffff;
+        --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+    
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    body {
+        font-family: "Inter Tight", sans-serif;
+        background-color: #f8fcff;
+        color: var(--text);
+        line-height: 1.6;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .shapka {
+        background: linear-gradient(135deg, var(--primary) 0%, #2a5a8a 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        min-height: 18vh;
+        color: var(--light);
+        box-shadow: var(--shadow);
+        padding: 1.5rem 5%;
+        text-align: center;
+    }
+    
+    .title {
+        font-weight: 700;
+        font-size: clamp(2.2rem, 5vw, 3.5rem);
+        text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        letter-spacing: -0.5px;
+    }
+    
+    .container {
+        width: 90%;
+        max-width: 800px;
+        margin: 2rem auto;
+        padding: 2rem;
+        background-color: var(--light);
+        border-radius: 16px;
+        box-shadow: var(--shadow);
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .bio {
+        text-align: center;
+        font-size: 1.25rem;
+        line-height: 1.8;
+        color: var(--text);
+        padding: 0 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+    
+    .bio span {
+        display: block;
+    }
+    
+    .link-card {
+        display: flex;
+        align-items: center;
+        background: var(--secondary);
+        border-radius: 12px;
+        padding: 1.2rem;
+        text-decoration: none;
+        color: var(--text);
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    
+    .link-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+        background: #e1f0ff;
+    }
+    
+    .link-card img {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 1.5rem;
+        border: 2px solid var(--primary);
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    .link-card span {
+        font-size: 1.2rem;
+        font-weight: 500;
+    }
+    
+    .emoji {
+        display: inline-block;
+        margin: 0 4px;
+        font-size: 1.3em;
+        vertical-align: middle;
+    }
+    
+    @media (max-width: 768px) {
+        .container {
+            padding: 1.5rem;
+            width: 95%;
+            margin: 1.5rem auto;
+        }
+        
+        .title {
+            font-size: 2.2rem;
+        }
+        
+        .bio {
+            font-size: 1.1rem;
+            padding: 0;
+        }
+        
+        .link-card {
+            padding: 1rem;
+        }
+        
+        .link-card img {
+            width: 50px;
+            height: 50px;
+            margin-right: 1rem;
+        }
+        
+        .link-card span {
+            font-size: 1.1rem;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .shapka {
+            min-height: 15vh;
+            padding: 1rem;
+        }
+        
+        .bio {
+            gap: 0.6rem;
+        }
+        
+        .link-card {
+            flex-direction: column;
+            text-align: center;
+            padding: 1.5rem;
+        }
+        
+        .link-card img {
+            margin: 0 0 1rem 0;
+        }
+    }
+    </style>
+</head>
+<body>
+    <header class="shapka">
+        <h1 class="title">Елена Соколенко</h1>
+    </header>
+    
+    <main class="container">
+        <div class="bio">
+            <span>Бизнес по подписке из любой точки <span class="emoji">🌍</span></span>
+            <span>HR и учусь психологии — <span class="emoji">✨</span> Разбираюсь в себе, чтобы понимать других</span>
+            <span><span class="emoji">💍</span> Замужем 2.0 | <span class="emoji">🎨</span> Творю</span>
+        </div>
+        
+        <a href="https://t.me/vertera_su" class="link-card">
+            <img src="health.jfif" alt="Иконка здоровья">
+            <span>Мой канал о здоровье</span>
+        </a>
+        
+        <a href="https://t.me/Blog_sok" class="link-card">
+            <img src="profileIcon.jfif" alt="Иконка профиля">
+            <span>Написать мне</span>
+        </a>
+
+        <a href="https://web.telegram.org/a/#-1001171580999" class="link-card">
+            <img src="tgChannel.jfif" alt="Иконка профиля">
+            <span>Мой основной канал</span>
+        </a>
+    </main>
+</body>
+</html>
